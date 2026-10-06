@@ -31,3 +31,13 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "hub_address_space" {
+  description = "Address space for the hub"
+  type        = string
+}
+
+variable "hub_subnets" {
+  description = "Subnets for the hub"
+  type        = map(string)
+}

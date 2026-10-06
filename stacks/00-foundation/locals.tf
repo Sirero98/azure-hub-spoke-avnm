@@ -8,4 +8,5 @@ locals {
       gestion  = "terraform"
     }
   )
+  vnet_hub_name = "vnet-hub"
 }
