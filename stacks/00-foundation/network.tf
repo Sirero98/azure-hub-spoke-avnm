@@ -6,6 +6,7 @@ resource "azurerm_virtual_network" "vnet_hub" {
 
   tags = local.tags
 }
+
 resource "azurerm_subnet" "hub" {
   for_each = var.hub_subnets
 
