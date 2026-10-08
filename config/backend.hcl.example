@@ -1,0 +1,5 @@
+resource_group_name    = "rg-tfstate"
+storage_account_name   = "sttfstateXXXXX"
+container_name         = "tfstate"
+use_azuread_auth       = true
+subscription_id        = "00000000-0000-0000-0000-000000000000"
