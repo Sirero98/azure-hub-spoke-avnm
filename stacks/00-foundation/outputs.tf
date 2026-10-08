@@ -22,3 +22,15 @@ output "vnet_hub_subnet_ids" {
   description = "The IDs of the hub subnets"
   value       = { for s in azurerm_subnet.hub : s.name => s.id }
 }
+
+output "spokes" {
+  description = "Spoke VNets keyed by spoke name, with their IDs and environment"
+  value = {
+    for name, spoke in module.spoke : name => {
+      vnet_id   = spoke.vnet_id
+      vnet_name = spoke.vnet_name
+      subnet_id = spoke.subnet_id
+      env       = var.spokes[name].env
+    }
+  }
+}

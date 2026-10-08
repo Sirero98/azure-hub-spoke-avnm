@@ -6,3 +6,25 @@ hub_subnets = {
   AzureFirewallManagementSubnet = "10.100.3.0/26"
   AzureBastionSubnet            = "10.100.4.0/26"
 }
+spokes = {
+  prod-1 = {
+    address_space   = "10.101.0.0/16"
+    workload_subnet = "10.101.1.0/24"
+    env             = "prod"
+  }
+  prod-2 = {
+    address_space   = "10.102.0.0/16"
+    workload_subnet = "10.102.1.0/24"
+    env             = "prod"
+  }
+  nonprod-1 = {
+    address_space   = "10.103.0.0/16"
+    workload_subnet = "10.103.1.0/24"
+    env             = "nonprod"
+  }
+  nonprod-2 = {
+    address_space   = "10.104.0.0/16"
+    workload_subnet = "10.104.1.0/24"
+    env             = "nonprod"
+  }
+}
