@@ -29,16 +29,6 @@ variable "tags" {
   default     = {}
 }
 
-variable "hub_address_space" {
-  description = "Address space for the hub"
-  type        = string
-}
-
-variable "hub_subnets" {
-  description = "Subnets for the hub"
-  type        = map(string)
-}
-
 variable "spokes" {
   description = "Map of spoke VNets keyed by spoke name"
   type = map(object({
