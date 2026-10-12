@@ -45,3 +45,6 @@ terraform.rc
 
 #Backend config (datos del storage account)
 config/backend.hcl
+
+
+modules/**/.terraform.lock.hcl

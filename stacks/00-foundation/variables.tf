@@ -6,7 +6,6 @@ variable "subscription_id" {
 variable "location" {
   description = "Location for the resources"
   type        = string
-  default     = "westeurope"
 
   validation {
     condition     = contains(["westeurope", "northeurope"], var.location)
@@ -17,13 +16,11 @@ variable "location" {
 variable "project" {
   description = "Project name for the resources"
   type        = string
-  default     = "hubspoke"
 }
 
 variable "environment" {
   description = "Environment for the resources"
   type        = string
-  default     = "lab"
 }
 
 variable "tags" {
