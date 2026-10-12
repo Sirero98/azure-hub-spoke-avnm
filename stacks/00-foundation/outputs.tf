@@ -13,7 +13,12 @@ output "rg_location" {
   value       = azurerm_resource_group.rg.location
 }
 
-output "monitoring_workspace_id" {
+output "law_id" {
   description = "The ID of the Log Analytics workspace"
-  value       = azurerm_log_analytics_workspace.monitoring.id
+  value       = azurerm_log_analytics_workspace.law.id
+}
+
+output "kv_id" {
+  description = "The ID of the Key Vault"
+  value       = azurerm_key_vault.kv.id
 }

@@ -8,5 +8,6 @@ locals {
       gestion  = "terraform"
     }
   )
-  monitoring_workspace_name = "law-${var.project}-${var.environment}"
+  law_name = "law-${var.project}-${var.environment}"
+  kv_name  = "kv-${var.project}-${var.environment}-${random_string.kv_suffix.result}"
 }
