@@ -14,4 +14,11 @@ locals {
   pip_fw_mgmt_name = "pip-fw-hub-mgmt"
   fw_policy_name   = "fwpol-hub"
   fw_name          = "fw-hub"
+  fw_log_categories = [
+    "AZFWNetworkRule",
+    "AZFWApplicationRule",
+    "AZFWNatRule",
+    "AZFWThreatIntel"
+  ]
 }
+
