@@ -8,5 +8,10 @@ locals {
       gestion  = "terraform"
     }
   )
-  vnet_hub_name = "vnet-hub"
+  vnet_hub_name    = "vnet-hub"
+  law_name         = "law-${var.project}-${var.environment}"
+  pip_fw_name      = "pip-fw-hub"
+  pip_fw_mgmt_name = "pip-fw-hub-mgmt"
+  fw_policy_name   = "fwpol-hub"
+  fw_name          = "fw-hub"
 }
