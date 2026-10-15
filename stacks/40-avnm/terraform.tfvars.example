@@ -1,0 +1,6 @@
+spokes = {
+  prod-1    = "prod"
+  prod-2    = "prod"
+  nonprod-1 = "nonprod"
+  nonprod-2 = "nonprod"
+}
