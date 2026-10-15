@@ -1,5 +1,47 @@
 ip_groups = {
-  "prod" = [ "10.101.0.0/16", "10.102.0.0/16"]
-  "nonprod" = [ "10.103.0.0/16", "10.104.0.0/16" ]
-  "onprem" = [ "192.168.0.0/16" ]
+  "prod"    = ["10.101.0.0/16", "10.102.0.0/16"]
+  "nonprod" = ["10.103.0.0/16", "10.104.0.0/16"]
+  "onprem"  = ["192.168.0.0/16"]
+}
+
+network_rule_collections = {
+  allow-exceptions = {
+    priority = 100
+    action   = "Allow"
+    rules = [{
+      name                  = "prod1-to-nonprod1-8080"
+      protocols             = ["TCP"]
+      destination_ports     = ["8080"]
+      source_addresses      = ["10.101.1.4"]
+      destination_addresses = ["10.103.1.4"]
+    }]
+  }
+  deny-prod-nonprod = {
+    priority = 200
+    action   = "Deny"
+    rules = [{
+      name                  = "prod-to-nonprod"
+      protocols             = ["Any"]
+      destination_ports     = ["*"]
+      source_ip_groups      = ["prod"]
+      destination_ip_groups = ["nonprod"]
+      }, {
+      name                  = "nonprod-to-prod"
+      protocols             = ["Any"]
+      destination_ports     = ["*"]
+      source_ip_groups      = ["nonprod"]
+      destination_ip_groups = ["prod"]
+    }]
+  }
+  allow-internal = {
+    priority = 300
+    action   = "Allow"
+    rules = [{
+      name                  = "internal-any"
+      protocols             = ["Any"]
+      destination_ports     = ["*"]
+      source_ip_groups      = ["prod", "nonprod", "onprem"]
+      destination_ip_groups = ["prod", "nonprod", "onprem"]
+    }]
+  }
 }

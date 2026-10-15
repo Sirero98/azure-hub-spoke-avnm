@@ -40,3 +40,25 @@ variable "ip_groups" {
     error_message = "All CIDRs in ip_groups must be valid (e.g. 10.101.0.0/16)."
   }
 }
+
+variable "network_rule_collections" {
+  description = "Network rule collections: name => { priority, action, rules }"
+  type = map(object({
+    priority = number
+    action   = string
+    rules = list(object({
+      name                  = string
+      protocols             = list(string)
+      destination_ports     = list(string)
+      source_addresses      = optional(list(string), [])
+      source_ip_groups      = optional(list(string), [])
+      destination_addresses = optional(list(string), [])
+      destination_ip_groups = optional(list(string), [])
+    }))
+  }))
+
+  validation {
+    condition     = alltrue([for c in values(var.network_rule_collections) : contains(["Allow", "Deny"], c.action)])
+    error_message = "Each network rule collection action must be 'Allow' or 'Deny'."
+  }
+}
