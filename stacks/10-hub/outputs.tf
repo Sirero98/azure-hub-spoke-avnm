@@ -12,3 +12,13 @@ output "fw_private_ip" {
   description = "The private IP address of the firewall"
   value       = azurerm_firewall.fw.ip_configuration[0].private_ip_address
 }
+
+output "vpn_gateway_hub_id" {
+  description = "The ID of the VPN Gateway in the hub"
+  value       = module.vpn_gateway.id
+}
+
+output "vpn_gateway_hub_public_ip" {
+  description = "The public IP address of the VPN Gateway in the hub"
+  value       = module.vpn_gateway.public_ip_address
+}

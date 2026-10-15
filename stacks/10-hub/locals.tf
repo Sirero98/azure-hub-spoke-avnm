@@ -20,5 +20,6 @@ locals {
     "AZFWNatRule",
     "AZFWThreatIntel"
   ]
+  vpngw_hub_name = "vpngw-hub"
 }
 
