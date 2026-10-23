@@ -12,8 +12,8 @@ locals {
   vnet_hub_name = "vnet-hub"
   fw_private_ip = cidrhost(data.azurerm_subnet.fw.address_prefixes[0], 4)
   fw_routes = {
-     default = "0.0.0.0/0"
-     onprem  = "192.168.0.0/16"
+    default = "0.0.0.0/0"
+    onprem  = "192.168.0.0/16"
   }
 
 }
