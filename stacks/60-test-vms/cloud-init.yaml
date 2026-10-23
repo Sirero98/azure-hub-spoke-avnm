@@ -1,0 +1,18 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /etc/nginx/sites-available/default
+    defer: true
+    content: |
+      server {
+        listen 8080 default_server;
+        root /var/www/html;
+      }
+  - path: /var/www/html/index.html
+    defer: true
+    content: |
+      Hola desde ${vm_name}
+runcmd:
+  - systemctl restart nginx

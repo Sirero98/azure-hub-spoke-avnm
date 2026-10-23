@@ -1,0 +1,7 @@
+vms = {
+  prod-1 = { vnet = "vnet-prod-1", subnet = "snet-workload" }
+  prod-2 = { vnet = "vnet-prod-2", subnet = "snet-workload" }
+  nonprod-1 = { vnet = "vnet-nonprod-1", subnet = "snet-workload" }
+  nonprod-2 = { vnet = "vnet-nonprod-2", subnet = "snet-workload" }
+  onprem = { vnet = "vnet-onprem", subnet = "snet-onprem" }
+}
