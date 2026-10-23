@@ -1,0 +1,5 @@
+onprem_address_space = "192.168.0.0/16"
+onprem_subnets = {
+  GatewaySubnet = "192.168.255.0/27"
+  snet-onprem   = "192.168.1.0/24"
+}
