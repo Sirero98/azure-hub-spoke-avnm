@@ -21,5 +21,7 @@ locals {
     "AZFWThreatIntel"
   ]
   vpngw_hub_name = "vpngw-hub"
+  bas_name       = "bas-hub"
+  pip_bas_name   = "pip-bas-hub"
 }
 
