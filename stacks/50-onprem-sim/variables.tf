@@ -38,3 +38,13 @@ variable "onprem_subnets" {
   description = "Subnets for the onprem"
   type        = map(string)
 }
+
+variable "azure_address_spaces" {
+  description = "Azure address spaces reachable from on-prem (hub + spokes)"
+  type        = list(string)
+
+  validation {
+    condition     = alltrue([for c in var.azure_address_spaces : can(cidrhost(c, 0))])
+    error_message = "All azure_address_spaces must be valid CIDRs (e.g. 10.101.0.0/16)."
+  }
+}
