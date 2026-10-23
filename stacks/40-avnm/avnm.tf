@@ -31,7 +31,7 @@ resource "azurerm_network_manager_connectivity_configuration" "this" {
   name                  = "cc-hubspoke"
   network_manager_id    = azurerm_network_manager.avnm.id
   connectivity_topology = "HubAndSpoke"
-  
+
   hub {
     resource_id   = data.azurerm_virtual_network.hub.id
     resource_type = "Microsoft.Network/virtualNetworks"
