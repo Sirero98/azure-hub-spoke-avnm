@@ -38,3 +38,8 @@ variable "hub_subnets" {
   description = "Subnets for the hub"
   type        = map(string)
 }
+
+variable "spoke_address_spaces" {
+  description = "Spoke address spaces routed through the firewall from the GatewaySubnet"
+  type        = list(string)
+}

@@ -5,3 +5,4 @@ hub_subnets = {
   AzureFirewallManagementSubnet = "10.100.3.0/26"
   AzureBastionSubnet            = "10.100.4.0/26"
 }
+spoke_address_spaces = ["10.101.0.0/16", "10.102.0.0/16", "10.103.0.0/16", "10.104.0.0/16"]
