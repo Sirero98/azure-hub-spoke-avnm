@@ -14,5 +14,5 @@ resource "azurerm_subnet" "onprem" {
   resource_group_name             = data.azurerm_resource_group.rg.name
   virtual_network_name            = azurerm_virtual_network.onprem.name
   address_prefixes                = [each.value]
-  default_outbound_access_enabled = false
+  default_outbound_access_enabled = true
 }
