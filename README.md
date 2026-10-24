@@ -1,5 +1,8 @@
 # Azure Hub-and-Spoke with Virtual Network Manager (Terraform)
 
+[![Terraform CI](https://github.com/Sirero98/azure-hub-spoke-avnm/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/Sirero98/azure-hub-spoke-avnm/actions/workflows/terraform-ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Hub-and-spoke network on Azure where **Azure Virtual Network Manager (AVNM)** builds the peerings and routes, and **Azure Firewall** inspects all traffic between spokes, to on-premises and to the internet.
 Four spokes are segmented into `prod` and `nonprod`, and a simulated on-premises site connects through a site-to-site VPN.
 Everything is deployed with Terraform, split into independent stacks with remote state, and validated with an automated connectivity test.
@@ -62,6 +65,7 @@ flowchart LR
 ## Repository structure
 
 ```
+.github/         CI workflow: fmt, validate and Checkov on every push
 config/          shared backend and variable files (*.example committed, real ones git-ignored)
 modules/         reusable modules: spoke, vpn-gateway, linux-vm
 scripts/         bootstrap, Terraform wrapper, deploy/destroy all stacks, connectivity tests
@@ -114,6 +118,9 @@ To work on a single stack, `tf.sh` adds the backend key and shared variables:
 `scripts/test-connectivity.sh` runs `curl` from inside each VM (`az vm run-command`, no SSH)
 and compares the result with the expected firewall behaviour. Last run: **13/13 passed**.
 
+On every push, [GitHub Actions](.github/workflows/terraform-ci.yml) runs `terraform fmt -check`,
+`terraform validate` on every stack and module, and a Checkov security scan (no Azure credentials needed).
+
 | Test | Expected | Result |
 |---|---|---|
 | nginx listening on 8080 in all 5 VMs | ok | ✅ 5/5 |
@@ -153,6 +160,16 @@ Running the full lab costs **about €1/hour** (mostly Azure Firewall Basic, two
 `00-foundation`, the VNets and the IP Groups cost practically nothing when idle.
 Destroy the paid stacks after testing.
 
+## Possible improvements
+
+- `terraform plan` in CI with GitHub OIDC (no stored secrets).
+- Enforce Checkov findings (`soft_fail: false`) with documented exceptions for lab trade-offs.
+- Ephemeral resources / write-only arguments to keep the VPN key out of the state.
+
 ## Design decisions
 
 See [docs/decisions.md](docs/decisions.md): stacks, cross-stack references, firewall policy, AVNM, secrets and lessons learned.
+
+## License
+
+[MIT](LICENSE). The Microsoft reference diagram is © Microsoft, licensed under CC BY 4.0.
