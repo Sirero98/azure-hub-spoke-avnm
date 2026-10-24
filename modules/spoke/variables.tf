@@ -19,7 +19,7 @@ variable "address_space" {
 
   validation {
     condition     = can(cidrhost(var.address_space, 0))
-    error_message = "address_space debe ser un CIDR válido, por ejemplo 10.101.0.0/16."
+    error_message = "address_space must be a valid CIDR, e.g. 10.101.0.0/16."
   }
 }
 
@@ -29,10 +29,9 @@ variable "workload_subnet_prefix" {
 
   validation {
     condition     = can(cidrhost(var.workload_subnet_prefix, 0))
-    error_message = "workload_subnet_prefix debe ser un CIDR válido, por ejemplo 10.101.1.0/24."
+    error_message = "workload_subnet_prefix must be a valid CIDR, e.g. 10.101.1.0/24."
   }
 }
-
 
 variable "tags" {
   description = "Tags for the resources"

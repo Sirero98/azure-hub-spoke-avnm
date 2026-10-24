@@ -24,4 +24,3 @@ locals {
   bas_name       = "bas-hub"
   pip_bas_name   = "pip-bas-hub"
 }
-

@@ -1,6 +1,6 @@
-# ── Fichas de contacto (cada LNG describe AL OTRO lado) ──
+# ── Local network gateways: each one describes the OTHER side ──
 
-# Usado por on-prem: "el hub está en esta IP y detrás tiene estas redes"
+# Used by on-prem: the hub is at this IP and has these networks behind it
 resource "azurerm_local_network_gateway" "hub" {
   name                = "lng-hub"
   resource_group_name = data.azurerm_resource_group.rg.name
@@ -10,7 +10,7 @@ resource "azurerm_local_network_gateway" "hub" {
   tags                = local.tags
 }
 
-# Usado por el hub: "on-prem está en esta IP y detrás tiene esta red"
+# Used by the hub: on-prem is at this IP and has this network behind it
 resource "azurerm_local_network_gateway" "onprem" {
   name                = "lng-onprem"
   resource_group_name = data.azurerm_resource_group.rg.name
@@ -20,7 +20,7 @@ resource "azurerm_local_network_gateway" "onprem" {
   tags                = local.tags
 }
 
-# ── Las llamadas (mi gateway + la ficha del otro) ──
+# ── Connections: local gateway + LNG describing the remote side ──
 
 resource "azurerm_virtual_network_gateway_connection" "onprem_to_hub" {
   name                = "cn-onprem-to-hub"

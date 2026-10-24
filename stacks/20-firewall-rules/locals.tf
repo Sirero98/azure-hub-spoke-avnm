@@ -10,4 +10,3 @@ locals {
   )
   fw_policy_name = "fwpol-hub"
 }
-

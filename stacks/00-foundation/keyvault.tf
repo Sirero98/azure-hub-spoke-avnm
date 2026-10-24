@@ -38,4 +38,3 @@ resource "azurerm_key_vault_secret" "psk_vpn" {
     azurerm_role_assignment.kv_secrets_officer
   ]
 }
-

@@ -17,7 +17,6 @@ resource "azurerm_network_manager_routing_rule" "this" {
   rule_collection_id = azurerm_network_manager_routing_rule_collection.this.id
   description        = "Route ${each.key} traffic through Azure Firewall"
 
-
   destination {
     type    = "AddressPrefix"
     address = each.value
@@ -27,5 +26,4 @@ resource "azurerm_network_manager_routing_rule" "this" {
     type    = "VirtualAppliance"
     address = local.fw_private_ip
   }
-
 }

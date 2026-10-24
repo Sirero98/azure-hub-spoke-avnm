@@ -43,8 +43,7 @@ terraform.rc
 # Uncomment the line below if you want to ignore planout files.
 # planout
 
-#Backend config (datos del storage account)
+# Backend config (storage account details)
 config/backend.hcl
-
 
 modules/**/.terraform.lock.hcl

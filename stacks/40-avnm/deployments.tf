@@ -12,6 +12,7 @@ resource "azurerm_network_manager_deployment" "this" {
   location           = data.azurerm_resource_group.rg.location
   scope_access       = each.key
   configuration_ids  = each.value
+
   triggers = {
     routes = jsonencode(local.fw_routes)
   }

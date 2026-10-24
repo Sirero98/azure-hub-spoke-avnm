@@ -9,7 +9,6 @@ resource "azurerm_network_manager" "avnm" {
   scope_accesses = ["Connectivity", "Routing"]
 
   tags = local.tags
-
 }
 
 resource "azurerm_network_manager_network_group" "this" {

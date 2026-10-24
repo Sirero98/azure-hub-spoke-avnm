@@ -41,6 +41,6 @@ variable "spokes" {
     condition = alltrue([
       for name, spoke in var.spokes : contains(["prod", "nonprod"], spoke.env)
     ])
-    error_message = "El campo env de cada spoke debe ser 'prod' o 'nonprod'."
+    error_message = "Each spoke env must be 'prod' or 'nonprod'."
   }
 }
